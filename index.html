@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://kit.fontawesome.com/2e09e16fdb.js" crossorigin="anonymous"></script>
+    <title>My Note Taking App</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>My Note</h1>
+            </div>
+            <nav>
+                <div class="cta">
+                    <button class="btn btnCta">Make a note</button>
+                </div>
+                <div class="cta">
+                    <button class="btn btnClear btnCta">Clear all Note</button>
+                </div>
+            </nav>
+        </header>
+        <section class="notes">
+            <div class="note" id="dummyText">
+                <div class="dateDiv">
+                    <p class="infoTxt">On 2021-07-14</p>
+                </div>
+                <div class="titleDiv">
+                    <p class="title">Dummy Note</p>
+                </div>
+
+                <div class="contentDiv">
+                    <p class="regularTxt"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti sint illum
+                        est impedit quos consequuntur quidem quod reprehenderit repellendus laboriosam modi fugiat,
+                        earum adipisci ad optio</p>
+                </div>
+                <div class="authorDiv">
+                    <p class="infoTxt">Aayushdn</p>
+                </div>
+                <i class="delBtn fas fa-trash-alt fa-lg"></i>
+                <div class="noteOverlay"></div>
+
+            </div>
+
+        </section>
+
+        <div class="modal createModal">
+            <div class="modalHead">
+                <h2>Create a new note</h2>
+                <img src="./assets/images/cross-sign.svg" class="crossIcon" alt="">
+            </div>
+            <div class="modalContent">
+                <form class="form">
+                    <div class="inp_field">
+                        <input type="text" class="titleInput" id="title" required>
+                        <span></span>
+                        <label>Title</label>
+                    </div>
+                    <div class="inp_field_textArea">
+                        <textarea class="contentInput" id="note" required></textarea>
+                        <span></span>
+                        <label>Note</label>
+                    </div>
+
+                    <div class="inp_field">
+                        <input type="text" class="titleInput" id="author" maxlength="10" required>
+                        <span></span>
+                        <label>Author</label>
+                    </div>
+                    <button type="submit" class="crtBtn">Create</button>
+                </form>
+            </div>
+        </div>
+
+        <form class="dispForm">
+            <div class="modal displayModal">
+                <div class="dispModalContent">
+                    <div class="dispTitleDiv">
+                        <h1 class="dispTitle"> dolor sit ametipsum dolor sit amet.</h1>
+                        <div class="dispInfo">
+                            <p id="dispDate">On 2021-07-20</p>
+                            <p id="dispAuthor">Aayushdn</p>
+                        </div>
+                    </div>
+
+                    <div class="dispNoteDiv">
+                        <textarea class="dispNote">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta quasi veritatis corrupti, odio sint ut iste dicta molestias quaerat in. Omnis officia odit, totam non inventore magni! Ex enim magnam alias qui blanditiis, nisi sunt doloremque ullam aspernatur natus fuga excepturi ipsam consectetur quam perferendis officia minima eum quibusdam accusantium obcaecati id ea! Itaque nulla maiores doloremque. Placeat aspernatur, exercitationem asperiores enim et, eveniet, quam officia in laboriosam quas ex iste inventore voluptatibus deleniti aliquam nemo optio. Voluptates eius quia pariatur quisquam ipsum, perspiciatis ea!
+                    </textarea>
+                    </div>
+                </div>
+                <div class="dispModalFoot">
+                    <button class="btn btnCta saveBtn">Save Changes</button>
+                </div>
+            </div>
+        </form>
+        <div class="overlay"></div>
+    </div>
+</body>
+<script src="./assets/js/script.js"></script>
+
+</html>
