@@ -1,0 +1,464 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 2px solid #ccc; */
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Fonts and Layout */
+
+header {
+  display: flex;
+  width: 100vw;
+  margin: auto;
+  justify-content: space-around;
+  height: 15vh;
+  border-bottom: 1px solid #c4c4c4;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo h1 {
+  font-family: "Lobster", cursive;
+}
+
+.notes {
+  width: 90vw;
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.note {
+  height: 400px;
+  width: 250px;
+  cursor: pointer;
+  border: 2px solid #c9c9c9;
+  border-radius: 30px;
+  box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  position: relative;
+}
+
+.dateDiv,
+.titleDiv,
+.authorDiv {
+  flex: 1;
+  height: 10%;
+  max-height: 40px;
+}
+
+.contentDiv {
+  flex: 2;
+  text-align: left;
+  align-items: center;
+  
+}
+.dateDiv,
+.titleDiv,
+.authorDiv,
+.contentDiv {
+  display: flex;
+}
+
+.titleDiv {
+  display: flex;
+  align-items: center;
+}
+.dateDiv {
+  justify-content: flex-end;
+  align-items: bottom;
+}
+
+.infoTxt {
+  color: rgba(221, 147, 4, 1);
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.regularTxt {
+  font-weight: 400;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  overflow: hidden;
+  word-wrap: nowrap;
+}
+
+/* Button Styles */
+
+.btn {
+  background: none;
+  border: solid 1px rgba(221, 147, 4, 1);
+  padding: 10px;
+  border-radius: 800px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  background: rgba(221, 147, 4, 1);
+  width: 100%;
+  height: 0%;
+  /* border-radius: 0 0 50% 50%; */
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: 0.5s;
+  border-radius: 50% 50% 0 0;
+}
+
+.btnCta:hover::before {
+  height: 180%;
+}
+
+.btnCta:hover {
+  color: white;
+}
+
+.btnClear{
+  width: 250px;
+}
+
+.btnCta {
+  width: 180px;
+  margin: auto 20px;
+}
+
+.crtBtn {
+  transition: 0.5s;
+}
+
+.crtBtn:hover {
+  background-color: rgba(221, 147, 4, 1);
+  color: white;
+}
+
+.delBtn{
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 22px 20px;
+  visibility: hidden;
+  z-index: 2;
+  border-radius: 5px;
+  color: white;
+}
+
+.noteOverlay {
+  display: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.delBtn:hover {
+  color: black;
+}
+
+.note:hover{
+  border: 0px;
+}
+
+.note:hover .noteOverlay {
+  display: block;
+}
+
+
+.note:hover .delBtn {
+  visibility: visible ;
+}
+
+/* Note Modal  */
+
+.modal {
+  display: none;
+  border-bottom: 1px solid #c4c4c4;
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
+  width: 70vw;
+  margin: 20px auto;
+  height: 80vh;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  animation: fadeIn 0.5s;
+}
+
+.show {
+  display: block;
+}
+
+.modalHead {
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(221, 147, 4, 1);
+  color: white;
+  font-size: clamp(8px, 4vw, 40px);
+}
+
+.modalHead img{
+  cursor: pointer;
+}
+
+.modalContent {
+  height: 70%;
+}
+
+.modalContent form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 100%;
+  margin: 10px auto;
+}
+
+.inp_field {
+  width: 100%;
+  margin: 20px 0;
+  border-bottom: 1px solid silver;
+  position: relative;
+}
+
+.inp_field_textArea {
+  width: 100%;
+  margin: 20px 0;
+  border-bottom: 1px solid silver;
+  position: relative;
+  height: 100px;
+}
+
+.inp_field_textArea textarea{
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  height: 100px;
+}
+
+.inp_field_textArea label{
+  position: absolute;
+  top: 0%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  font-weight: 600;
+  color: #c4c4c4;
+  pointer-events: none;
+  transition: .5s;
+  
+}
+
+.inp_field_textArea textarea:focus ~ label,
+.inp_field_textArea textarea:valid ~ label{
+  top: -20px;
+  color: rgba(221, 147, 4, 1);
+}
+
+.inp_field_textArea span::before{
+  content: '';
+  width: 100%;
+  background-color: rgba(221, 147, 4, 1);
+  height: 0px;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  
+}
+
+.inp_field_textArea textarea:focus ~ span::before,
+.inp_field_textArea textarea:valid ~ span::before{
+  height: 2px;
+}
+
+.inp_field input{
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  padding: 0 5px;
+  
+}
+
+.inp_field label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  font-weight: 600;
+  color: #c4c4c4;
+  pointer-events: none;
+  transition: .5s;
+}
+.inp_field span::before{
+  content: '';
+  width: 100%;
+  height: 0px;
+  top: 40px;
+  left: 0;
+  position: absolute;
+  background-color: rgba(221, 147, 4, 1);
+  transition: 0.5s;
+}
+
+.inp_field input:focus ~ label,
+.inp_field input:valid ~ label {
+  top:-5px;
+  color: rgba(221, 147, 4, 1);
+}
+
+.inp_field input:focus ~ span::before,
+.inp_field input:valid ~ span::before,
+.inp_field textarea:focus ~ span::before{
+  height: 2px;
+}
+
+
+.crtBtn{
+  width: clamp(200px, 20%,500px);
+  margin: auto;
+  padding: 20px 10px;
+  background-color: rgba(221, 147, 4, 1);
+  border: none;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 2px;
+}
+
+
+.overlay {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.473);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.crossIcon {
+  width: 30px;
+}
+
+
+/* display Modal*/
+.displayModal{
+  display: none;
+  flex-direction: column-reverse;
+}
+
+
+
+.dispModalContent{
+  width: 90%;
+  margin: auto;
+  flex: 2;
+}
+
+.dispTitleDiv{
+  display: flex;
+  justify-content: space-between;
+}
+.dispTitle{
+  flex: 2;
+  font-size: clamp(16px,2vw,50px);
+  margin: 20px 0 10px 0;
+}
+
+.dispInfo{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.dispInfo p{
+  color: rgba(221, 147, 4, 1);
+  margin: 2px 0;
+  font-weight: 600;
+  font-size: clamp(10px,1vw,50px);
+}
+
+.dispNote{
+  width: 100%;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  height: 80%;
+  resize: none;
+}
+
+.dispNoteDiv{
+  height: 85%;
+}
+
+.dispModalFoot{
+  width: 90%;
+  margin: auto;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.dispCrossIcon{
+  position: absolute;
+  top: 25px;
+  left: 10px;
+}
+
+.dispForm{
+  height: 100%;
+}
+
+/* animation */
+
+@keyframes fadeIn {
+  from{
+    top: -180px;
+  }
+  to{
+    top: 50%;
+  }
+}
